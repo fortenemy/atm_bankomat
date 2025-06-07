@@ -1,0 +1,39 @@
+
+class Konto:
+    def __init__(self, wlasciciel, saldo = 0):
+        self.wlasciciel = wlasciciel
+        self.saldo = saldo
+        
+    def wplac(self, kwota):
+        self.saldo += kwota
+        
+    def wyplac(self, kwota):
+        if kwota <= self.saldo:
+            self.saldo -= kwota
+        else:
+            print('Niewystarczajaca ilosc srodkow na koncie.')
+        
+    def pokaz_saldo(self):
+        print('Saldo konta: ', self.saldo)
+            
+konto = Konto('Janusz', 1550)
+
+while True:
+    print('Wybierz opcję: ')
+    print('1) Wplata')
+    print('2) Wyplata')
+    print('3) Sprawdz saldo')
+    print('4) Wyjscie')
+    
+    wybor = input(f'Wybierz typ transakcji: ').strip().lower()
+    
+    if wybor == '1' or wybor == 'wplata':
+        konto.wplac(int(input('Podaj kwote wplaty: ')))
+    elif wybor == '2' or wybor == 'wyplata':
+        konto.wyplac(int(input('Podaj kwote wyplaty: ')))
+    elif wybor == '3' or wybor == 'saldo':
+        konto.pokaz_saldo()
+    elif wybor == '4' or wybor == 'wyjscie' or wybor == 'koniec':
+        break
+    else:
+        print('Niepoprawny wybor. Sprobuj jeszcze raz')

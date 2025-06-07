@@ -1,0 +1,59 @@
+class Account:
+    def __init__(self, owner, balance=0):
+        """Initialize a new account with owner name and starting balance."""
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        """Deposit the given amount into the account."""
+        self.balance += amount
+        print(f"Deposited {amount}. New balance: {self.balance}")
+
+    def withdraw(self, amount):
+        """Withdraw the given amount if sufficient funds exist."""
+        if amount <= self.balance:
+            self.balance -= amount
+            print(f"Withdrew {amount}. New balance: {self.balance}")
+        else:
+            print("Insufficient funds on the account.")
+
+    def show_balance(self):
+        """Print the current account balance."""
+        print(f"Current balance: {self.balance}")
+
+
+def main():
+    account = Account("Janusz", 1550)
+
+    while True:
+        print("\nSelect an option:")
+        print("1) Deposit")
+        print("2) Withdraw")
+        print("3) Check balance")
+        print("4) Exit")
+
+        choice = input("Enter your choice: ").strip().lower()
+
+        if choice in ("1", "deposit"):
+            try:
+                amount = int(input("Enter amount to deposit: "))
+                account.deposit(amount)
+            except ValueError:
+                print("Please enter a valid number.")
+        elif choice in ("2", "withdraw"):
+            try:
+                amount = int(input("Enter amount to withdraw: "))
+                account.withdraw(amount)
+            except ValueError:
+                print("Please enter a valid number.")
+        elif choice in ("3", "balance", "check balance"):
+            account.show_balance()
+        elif choice in ("4", "exit", "quit"):
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+
+if __name__ == "__main__":
+    main()
