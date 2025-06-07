@@ -42,7 +42,7 @@ python atm.py
 * Deposit funds
 * Withdraw funds with insufficient funds check
 * Display current balance
-* Structured with `Account` class and `main()` function
+* Structured using the `Account` (English) or `Konto` (Polish) class along with a `main()` function
 
 ## License
 
